@@ -1,0 +1,33 @@
+
+<%= form_for(@carrera) do |f| %>
+  <% if @carrera.errors.any? %>
+     <div id="error_explanation">
+      <ul>
+       <% @carrera.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+       <% end %>
+      </ul>
+     </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  
+  <% if @carrera.mallas.present? %>
+      <h4>Mallas Asociadas</h4>
+      <%= f.fields_for :mallas do |malla_form| %>
+          <%= malla_form.label :plan %> <br>
+          <%= malla_form.text_field :plan %> <br>
+          
+      <% end %>
+  <% end %>
+  
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

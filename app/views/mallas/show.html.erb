@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @malla.plan %> <br>
+  
+  <strong>Carrera:</strong>
+  <%= @malla.carrera ? @malla.carrera.nombre : "Sin carrera asociada" %>
+
+</p>
+
+<%= link_to 'Editar', edit_malla_path(@malla) %> |
+<%= link_to 'Volver', mallas_path %>

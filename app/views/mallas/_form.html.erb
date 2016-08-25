@@ -1,0 +1,25 @@
+<%= form_for(@malla) do |f| %>
+
+  <% if @malla.errors.any? %>
+   <div id="error_explanation">
+    <ul>
+     <% @malla.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+     <% end %>
+    </ul>
+   </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :plan %><br>
+    <%= f.text_field :plan %> <br>
+    
+    <%= f.label :carrera_id %> <br>
+    <%= f.select :carrera_id, Carrera.all.collect {|c| [ c.nombre, c.id ] }, {:include_blank => true}%>
+    
+    
+  </div> 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

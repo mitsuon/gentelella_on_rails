@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Modulos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Creditos</th>
+      <th>Nivel</th>
+      <th>Plan</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @modulos.each do |modulo| %>
+      <tr>
+        <td><%= modulo.nombre %></td>
+        <td><%= modulo.codigo %></td>
+        <td><%= modulo.creditos %></td>
+        <td><%= modulo.nivel %></td>
+        <td><%= modulo.malla ? modulo.malla.plan : "Sin carrera asociada" %></td>
+        <td><%= link_to 'Ver', modulo %></td>
+        <td><%= link_to 'Editar', edit_modulo_path(modulo) %></td>
+        <td><%= link_to 'Eliminar', modulo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Crear Modulo', new_modulo_path %>

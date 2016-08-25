@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @modulo.nombre %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @modulo.codigo %>
+</p>
+
+<p>
+  <strong>Creditos:</strong>
+  <%= @modulo.creditos %>
+</p>
+
+<p>
+  <strong>Nivel:</strong>
+  <%= @modulo.nivel %>
+</p>
+
+<strong>Plan:</strong>
+<%= @modulo.malla ? @modulo.malla.plan : "Sin carrera asociada" %> </br>
+
+<%= link_to 'Editar', edit_modulo_path(@modulo) %> |
+<%= link_to 'Volver', modulos_path %>
