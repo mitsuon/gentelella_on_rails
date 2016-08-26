@@ -1,77 +1,70 @@
-<!-- page content -->
-<div class="right_col" role="main">
-  <div class="">
-    <div class="page-title">
-      <div class="title_left">
-        <h3>Bienvenido</h3>
+<%= render "renders/pruebatop"%>	
+  <h2>Administrar Carrera</h2>
+<%= render "renders/pruebamid"%>	
+    <table id="tabla_carrera" class="table table-striped projects">
+      <thead>
+        <tr>
+          <th style="width: 1%">#</th>
+          <th style="width: 20%">Nombre Carrera</th>
+          <th style="width: 20%">#Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @carreras.each do |carrera| %>
+        <tr>
+          <td>#</td>
+          <td> <a><%= carrera.nombre %> </a>
+            <br>
+            <small>Creada: <%= carrera.created_at %></small>
+          </td>
+          <td>
+              <%= link_to '<i class="fa fa-folder"></i> Ver'.html_safe, carrera, class: "btn btn-primary btn-xs"  %>
+              <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, edit_carrera_path(carrera), class: "btn btn-info btn-xs"  %>
+              <%= link_to '<i class="fa fa-pencil"></i> Eliminar'.html_safe, carrera,method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"  %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    </br>
+    <div class="ln_solid"></div>
+      <div class="form-group">
+        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+        <%= link_to 'Crear Carrera', new_carrera_path, class: "btn btn-success"%>
+        </div>
       </div>
 
-    </div>
-          <div class="clearfix"></div>
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="x_panel" style="height:600px;">
-                <div class="x_title">
-                  <h2>Mantener Carreras</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <!-- layout interno -->
-                                    
-                    <!-- start project list -->
-                    <table class="table table-striped projects">
-                      <thead>
-                        <tr>
-                          <th style="width: 1%">#</th>
-                          <th style="width: 20%">Nombre Carrera</th>
-                          <th style="width: 20%">#Accion</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <% @carreras.each do |carrera| %>
-                        <tr>
-                          <td>#</td>
-                          <td> <a><%= carrera.nombre %> </a>
-                            <br>
-                            <small>Creada: <%= carrera.created_at %></small>
-                          </td>
-                          <td>
-                              <%= link_to '<i class="fa fa-folder"></i> Ver'.html_safe, carrera, class: "btn btn-primary btn-xs"  %>
-                              <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, carrera, class: "btn btn-info btn-xs"  %>
-
-                              <%= link_to 'Editar', edit_carrera_path(carrera) %> <!-- old way -->
-                              <%= link_to 'Eliminar', carrera, method: :delete, data: { confirm: 'Are you sure?' } %>  <!-- old way -->
-                              <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a> <!-- reference -->
-                          </td>
-                        </tr>
-                      <% end %>
-                      </tbody>
-                    </table>
-                <!-- fin layout interno -->
-                              <%= link_to 'Crear Carrera', new_carrera_path, class: "btn btn-success"%>
-
-              </div>
-              <!-- fuera layout interno -->
-            </div>
-          </div>
-    
-  
-  </div>
-</div>
+     <%= render "renders/pruebabot"%>
 <!-- /page content -->
 
 <!--Test Page specific JS -->
+<script>
+  
+  $('#tabla_carrera').DataTable( {
+    responsive: true,
+    "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ registros",
+        "sZeroRecords":   "No se encontraron resultados",
+        "sEmptyTable":    "Ningún dato disponible en esta tabla",
+        "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+} );
+</script>

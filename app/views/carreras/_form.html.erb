@@ -1,5 +1,5 @@
 
-<%= form_for(@carrera) do |f| %>
+<%= form_for(@carrera,:html => {:class => 'form-horizontal form-label-left'}) do |f| %>
   <% if @carrera.errors.any? %>
      <div id="error_explanation">
       <ul>
@@ -10,9 +10,12 @@
      </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
+
+  <div class="form-group">
+    <%= f.label :nombre, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+        <%= f.text_field :nombre, :class => 'form-control' %>
+    </div>
   </div>
   
   <% if @carrera.mallas.present? %>
@@ -25,9 +28,12 @@
   <% end %>
   
   <br>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+        <%= f.submit class: "btn btn-primary" %>
+<!-- saque 2div que se cerraran en el edit... cerrar en el new tb -->    
+ 
 <% end %>
 
 

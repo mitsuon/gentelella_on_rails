@@ -1,8 +1,14 @@
-<h1>Editar Carrera</h1>
-
+<%= render "renders/pruebatop"%>
+<h2>Editar Carrera</h2>
+<%= render "renders/pruebamid"%>
 <%= render 'form' %>
 
 
 
-<%= link_to 'Show', @carrera %> |
-<%= link_to 'Back', carreras_path %>
+
+ <%= link_to 'Ver', @carrera, class: "btn btn-info" %>
+ <%= link_to 'Volver', carreras_path, class: "btn btn-default" %>
+  </div>
+ </div>
+
+<%= render "renders/pruebabot"%>

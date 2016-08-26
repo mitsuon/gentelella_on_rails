@@ -43,3 +43,8 @@
 
 
 
+
+
+//= require js/datatables/jquery.dataTables.min.js
+
+
