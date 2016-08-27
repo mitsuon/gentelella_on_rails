@@ -1,5 +1,5 @@
 
-<%= form_for(@malla) do |f| %>
+<%= form_for(@malla,:html => {:class => 'form-horizontal form-label-left'}) do |f| %>
 
   <% if @malla.errors.any? %>
    <div id="error_explanation">
@@ -11,16 +11,24 @@
    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :plan %><br>
-    <%= f.text_field :plan %> <br>
+  <div class="form-group">
+    <%= f.label :plan, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+    <%= f.text_field :plan, :class => 'form-control' %>
+    </div>
     
-    <%= f.label :carrera_id %> <br>
-    <%= f.select :carrera_id, Carrera.all.collect {|c| [ c.nombre, c.id ] }, {:include_blank => true}%>
+    </br>
+    <%= f.label :carrera_id,:class =>'control-label col-md-3 col-sm-3 col-xs-12' %> <br>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+    <%= f.select :carrera_id, Carrera.all.collect {|c| [ c.nombre, c.id ] }, {:include_blank => true}, {:class => 'form-control'}%>
+    </div>
     
-    
-  </div> 
-  <div class="actions">
-    <%= f.submit %>
   </div>
+  
+   <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+        <%= f.submit class: "btn btn-primary" %>
+        
+        
 <% end %>

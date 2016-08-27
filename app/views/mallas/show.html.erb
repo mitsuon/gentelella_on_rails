@@ -1,13 +1,38 @@
+<%= render "renders/pruebatop"%>
+<h2>Ver Malla</h2>
+<%= render "renders/pruebamid"%>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Plan:</strong>
-  <%= @malla.plan %> <br>
+
+<form class="form-horizontal form-label-left">
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Plan </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @malla.plan %>">
+    </div> 
+    
+   
+    <br><br>
+    
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Carrera </label>
+    <% if @malla.carrera.nil? %>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <input type="text" class="form-control" disabled="disabled" placeholder="Sin carrera asociada">
+      </div> 
+    <% else %>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <input type="text" class="form-control" disabled="disabled" placeholder="<%= @malla.carrera.nombre %>">
+      </div>
+    <% end %>
+  </div>
   
-  <strong>Carrera:</strong>
-  <%= @malla.carrera ? @malla.carrera.nombre : "Sin carrera asociada" %>
+   <div class="ln_solid"></div>
+    <div class="form-group">
+      <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+         <%= link_to 'Editar', edit_malla_path(@malla), class: "btn btn-primary" %>
+        <%= link_to 'Volver', mallas_path, class: "btn btn-default" %>
+      </div>
+    </div>
+  </form>
 
-</p>
-
-<%= link_to 'Editar', edit_malla_path(@malla) %> |
-<%= link_to 'Volver', mallas_path %>
+<%= render "renders/pruebabot"%>	

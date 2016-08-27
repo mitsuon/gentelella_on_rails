@@ -1,9 +1,14 @@
-<%= render "renders/top"%>
-
-<h1>Editar Malla</h1>
+<%= render "renders/pruebatop"%>
+<h2>Editar Malla</h2>
+<%= render "renders/pruebamid"%>
 
 <%= render 'form' %>
 
-<%= link_to 'Ver', @malla %> |
-<%= link_to 'Volver', mallas_path %>
-<%= render "renders/bot"%>
+
+<%= link_to 'Ver', @malla, class: "btn btn-info" %>
+<%= link_to 'Volver', mallas_path, class: "btn btn-default" %>
+</div>
+</div>
+
+
+<%= render "renders/pruebabot"%>
