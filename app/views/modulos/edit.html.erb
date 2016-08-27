@@ -1,6 +1,13 @@
-<h1>Editar Modulo</h1>
-
+<%= render "renders/pruebatop"%>
+<h2>Editar Módulo</h2>
+<%= render "renders/pruebamid"%>
 <%= render 'form' %>
 
-<%= link_to 'Ver', @modulo %> |
-<%= link_to 'Volver', modulos_path %>
+
+
+ <%= link_to 'Ver', @modulo, class: "btn btn-info" %>
+ <%= link_to 'Volver', modulos_path, class: "btn btn-default" %>
+  </div>
+ </div>
+
+<%= render "renders/pruebabot"%>

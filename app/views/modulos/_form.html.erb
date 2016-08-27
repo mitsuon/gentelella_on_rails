@@ -1,4 +1,4 @@
-<%= form_for(@modulo) do |f| %>
+<%= form_for(@modulo,:html => {:class => 'form-horizontal form-label-left'}) do |f| %>
   <% if @modulo.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -9,33 +9,47 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
+ <div class="form-group">
+      <%= f.label :nombre, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <%= f.text_field :nombre, :class => 'form-control' %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :codigo %><br>
-    <%= f.text_field :codigo %>
+  
+  
+ <div class="form-group">
+      <%= f.label :código, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <%= f.text_field :codigo, :class => 'form-control' %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :creditos %><br>
-    <%= f.number_field :creditos %>
+  
+   <div class="form-group">
+      <%= f.label :créditos, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <%= f.number_field :creditos, :class => 'form-control' %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :nivel %><br>
-    <%= f.number_field :nivel %>
-   </div>
-   
-    <div class="field">
-      <%= f.label :malla_id %> <br>
-      <%= f.select :malla_id, Malla.all.collect {|c| [ c.plan, c.id ] }, {:include_blank => true}%>
+  
+ <div class="form-group">
+      <%= f.label :Nivel, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <%= f.number_field :nivel, :class => 'form-control' %>
+      </div>
+  </div>
+    
+
+ <div class="form-group">
+    <%= f.label :malla_id,:class =>'control-label col-md-3 col-sm-3 col-xs-12' %> 
+    <div class="col-md-9 col-sm-9 col-xs-12">
+    <%= f.select :malla_id, Malla.all.collect {|c| [ c.plan, c.id ] }, {:include_blank => true}, {:class => 'form-control'}%>
     </div>
-  
-
-
-
-  
-  <div class="actions">
-    <%= f.submit %>
   </div>
+
+ <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+        <%= f.submit class: "btn btn-primary" %>
+  
+ 
 <% end %>
