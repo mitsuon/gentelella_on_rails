@@ -1,0 +1,74 @@
+<div class="">
+  <a class="hiddenanchor" id="toregister"></a>
+  <a class="hiddenanchor" id="tologin"></a>
+
+  <div id="wrapper">
+    <div id="login" class="animate form">
+      <section class="login_content">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <h1>Registrar Cuenta</h1>
+          
+            <div class="form-group">
+              <%= f.label :nombre, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+                  <%= f.text_field :nombre, :class => 'form-control' %>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :apellido, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+                  <%= f.text_field :apellido, :class => 'form-control' %>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :email, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+                  <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder =>"Email",  :required => ""  %>
+              </div>
+            </div>
+            
+                        <div class="form-group">
+              <%= f.label :tipo,:class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <%= f.select :tipo, options_for_select(['Director de escuela','Administrador'], params[:tipo]),{}, { :class => 'form-control' } %><br>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :contraseña,:class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </div>
+            </div>
+          
+            <div class="form-group">
+              <%= f.label :Confirmar_contraseña,:class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+                <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              </div>
+            </div>
+            
+            <div class="actions">
+               <%= f.submit class: "btn btn-primary" %>
+            </div>
+            
+            
+            
+          <div class="clearfix"></div>
+          <div class="separator">
+            <p class="change_link">
+              <%= link_to 'Iniciar Sesión', new_usuario_session_path, class: "to_register"%>
+            </p>
+            <div class="clearfix"></div>
+            <br />
+
+          </div>
+            
+          <% end %>
+      </section>
+    </div>
+  </div>
+</div>

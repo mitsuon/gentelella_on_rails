@@ -17,7 +17,7 @@
         </div>
         <div class="profile_info">
           <span>Bienvenido,</span>
-          <h2>Pablete JC</h2>
+          <h2><%= current_usuario.nombre %> <%= current_usuario.apellido %></h2>
         </div>
       </div>
       <!-- /menu profile quick info -->
@@ -28,8 +28,9 @@
       <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
         <div class="menu_section">
-          <h3>Administrador</h3>
+          <h3><%= current_usuario.tipo %></h3>
           <ul class="nav side-menu">
+            <% if current_usuario.tipo == 'Administrador'%>
             <li><a><i class="fa fa-sitemap"></i> Planificación <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
                 
@@ -59,7 +60,6 @@
                 </li>
               </ul>
             </li>
-            
          
             <li><a><i class="fa fa-edit"></i> Solicitudes <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
@@ -84,8 +84,18 @@
                 </li>
               </ul>
             </li>
-            
+
           </ul>
+          <% else %>
+            <li><a><i class="fa fa-edit"></i> Solicitudes <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu" style="display: none">
+               <li><a href="#">Ver Solicitudes</a>
+                </li>
+                <li><a href="#">Crear Solicitud</a>
+                </li>
+              </ul>
+            </li>
+          <% end %>
         </div>
         <div class="menu_section">
         

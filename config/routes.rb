@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :usuarios,:controllers =>{
+    :registrations => "usuarios/registrations",
+  }
   resources :modulos
   resources :mallas
   resources :carreras

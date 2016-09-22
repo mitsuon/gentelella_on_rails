@@ -1,0 +1,50 @@
+<div class="">
+  <a class="hiddenanchor" id="toregister"></a>
+  <a class="hiddenanchor" id="tologin"></a>
+
+  <div id="wrapper">
+    <div id="login" class="animate form">
+      <section class="login_content">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <h1>Iniciar Sesión</h1>
+          <div>
+            <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder =>"Email",  :required => ""  %>
+          </div>
+          <div>
+
+            <%= f.password_field :password, autofocus: true, :class => "form-control", :placeholder =>"Contraseña",  :required => ""  %>
+
+          </div>
+
+
+            <% if devise_mapping.rememberable? -%>
+                <div class="checkbox-inline">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :recordar %>
+                </div>
+            <% end -%>
+
+
+            <div>
+
+            <%= f.submit "Iniciar sesión", :class => "btn btn-default submit"%>
+
+            <a class="reset_pass" href="#">Lost your password?</a>
+          </div>
+          <div class="clearfix"></div>
+          <div class="separator">
+            <p class="change_link">
+              <%= link_to 'Crear Cuenta', new_usuario_registration_path, class: "to_register"%>
+            </p>
+            <div class="clearfix"></div>
+            <br />
+
+          </div>
+        <% end %>
+        <!-- form -->
+      </section>
+      <!-- content -->
+    </div>
+    
+  </div>
+</div>
