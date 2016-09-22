@@ -1,6 +1,7 @@
 class MallasController < ApplicationController
   before_action :set_malla, only: [:show, :edit, :update, :destroy]
-
+  before_action :validate_usuario
+  
   # GET /mallas
   # GET /mallas.json
   def index

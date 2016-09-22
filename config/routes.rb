@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+  get 'administracion_usuarios/index'
+
+  get 'administracion_usuarios/activar/:id' => "administracion_usuarios#activar", as: :administracion_usuarios_activar
+  get 'administracion_usuarios/bloquear/:id' => "administracion_usuarios#bloquear", as: :administracion_usuarios_bloquear
+  match 'administracion_usuarios/:id' => 'administracion_usuarios#destroy', :via => :delete, :as => :administracion_usuarios_destroy_user
+
   devise_for :usuarios,:controllers =>{
     :registrations => "usuarios/registrations",
   }
+  
   resources :modulos
   resources :mallas
   resources :carreras

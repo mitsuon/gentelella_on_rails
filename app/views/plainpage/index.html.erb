@@ -19,6 +19,20 @@
 
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel" style="height:600px;">
+          <% if !current_usuario.activo %>
+            <div class="well profile_view">
+              <div class="col-sm-12">
+                <h4 class="brief"><i>Cuenta Bloqueada</i></h4>
+                <div class="left col-xs-7">
+                  <p><strong>Su cuenta tipo: <i><%= current_usuario.tipo %> </i> se encuentra bloqueada, contactar al administrador para su activación. </strong></p>  <br/>
+                 
+                </div>
+              </div>
+              <div class="col-xs-12 bottom text-center">
+              </div>
+            </div>
+          <% end %>
+         
          
         </div>
       </div>

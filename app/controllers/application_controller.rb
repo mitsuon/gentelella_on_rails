@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
 
 
 
+    #redirect to root if the user doesnt belong to administrator or its blocked
+    def validate_usuario
+      if current_usuario.tipo!='Administrador' || !current_usuario.activo
+        redirect_to root_path
+      end
+    end
 end

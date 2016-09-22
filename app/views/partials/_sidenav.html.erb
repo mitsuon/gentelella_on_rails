@@ -30,7 +30,7 @@
         <div class="menu_section">
           <h3><%= current_usuario.tipo %></h3>
           <ul class="nav side-menu">
-            <% if current_usuario.tipo == 'Administrador'%>
+            <% if current_usuario.tipo == 'Administrador' %>
             <li><a><i class="fa fa-sitemap"></i> Planificación <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
                 
@@ -80,7 +80,7 @@
             
             <li><a><i class="fa fa-users"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
-                <li><a href="#">Administrar Usuarios</a>
+                <li><%= link_to 'Administrar Usuarios', administracion_usuarios_index_path %>
                 </li>
               </ul>
             </li>

@@ -1,33 +1,21 @@
 class CarrerasController < ApplicationController
-
   before_action :set_carrera, only: [:show, :edit, :update, :destroy]
-
+  before_action :validate_usuario
+  
   # GET /carreras
   # GET /carreras.json
   def index
-    if current_usuario.tipo=='Administrador'
-      @carreras = Carrera.all
-    else
-      redirect_to  root_path 
-    end
+    @carreras = Carrera.all
   end
 
   # GET /carreras/1
   # GET /carreras/1.json
   def show
-     if current_usuario.tipo!='Administrador'
-             redirect_to  root_path
-     end
   end
 
   # GET /carreras/new
   def new
-    if current_usuario.tipo=='Administrador'
-      @carrera = Carrera.new
-    else
-      redirect_to  root_path 
-    end
-    
+    @carrera = Carrera.new
   end
 
   # GET /carreras/1/edit

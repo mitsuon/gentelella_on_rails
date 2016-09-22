@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831013609) do
+ActiveRecord::Schema.define(version: 20160922002451) do
 
   create_table "carreras", force: :cascade do |t|
     t.string   "nombre"
@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(version: 20160831013609) do
   end
 
   create_table "usuarios", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(version: 20160831013609) do
     t.string   "tipo"
     t.string   "nombre"
     t.string   "apellido"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "activo",                 default: false
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true

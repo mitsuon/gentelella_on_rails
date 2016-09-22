@@ -1,6 +1,7 @@
 class ModulosController < ApplicationController
   before_action :set_modulo, only: [:show, :edit, :update, :destroy]
-
+  before_action :validate_usuario
+  
   # GET /modulos
   # GET /modulos.json
   def index
@@ -73,4 +74,5 @@ class ModulosController < ApplicationController
     def modulo_params
       params.require(:modulo).permit(:nombre, :codigo, :creditos, :nivel, :malla_id)
     end
+
 end
