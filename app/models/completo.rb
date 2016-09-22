@@ -1,0 +1,2 @@
+class Completo < Profesor
+end

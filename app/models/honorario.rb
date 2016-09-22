@@ -1,0 +1,2 @@
+class Honorario < Profesor
+end
