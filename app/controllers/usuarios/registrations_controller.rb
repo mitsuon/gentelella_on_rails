@@ -13,11 +13,6 @@ class Usuarios::RegistrationsController < Devise::RegistrationsController
     super
   end
   
-  def testing
-    super
-    @usuarios = Usuario.all
-  end
-    
 
   # GET /resource/edit
   def edit
