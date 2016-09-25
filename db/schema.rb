@@ -11,23 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922162550) do
+ActiveRecord::Schema.define(version: 20160925044857) do
 
   create_table "carreras", force: :cascade do |t|
     t.string   "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "completos", force: :cascade do |t|
-    t.float    "numHrs"
-    t.float    "hrsDocencia"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "honorarios", force: :cascade do |t|
-    t.integer  "precioHora"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,8 +44,11 @@ ActiveRecord::Schema.define(version: 20160922162550) do
     t.string   "rut"
     t.string   "telefono"
     t.string   "tipo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "precioHora"
+    t.float    "numHrs"
+    t.float    "hrsDocencia"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "usuarios", force: :cascade do |t|

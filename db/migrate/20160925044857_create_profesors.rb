@@ -6,6 +6,9 @@ class CreateProfesors < ActiveRecord::Migration
       t.string :rut
       t.string :telefono
       t.string :tipo
+      t.integer :precioHora
+      t.float :numHrs
+      t.float :hrsDocencia
 
       t.timestamps null: false
     end

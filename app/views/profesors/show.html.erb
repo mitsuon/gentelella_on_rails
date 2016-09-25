@@ -1,0 +1,70 @@
+<%= render "renders/pruebatop"%>
+<h2>Ver Profesor</h2>
+<%= render "renders/pruebamid"%>
+<p id="notice"><%= notice %></p>
+
+<form class="form-horizontal form-label-left">
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.nombre %>">
+    </div> 
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Rut </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.rut %>">
+    </div> 
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Email </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.email %>">
+    </div> 
+  </div>
+
+
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.telefono %>">
+    </div> 
+  </div>
+  
+  <%if @profesor.tipo=='Completo' %>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Número horas </label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+              <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.numHrs %>">
+          </div>
+      </div>
+      
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Horas docencia </label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+              <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.hrsDocencia %>">
+          </div>
+      </div>
+  <% else %>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Precio hora </label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+              <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.precioHora %>">
+          </div>
+      </div> 
+  
+  <% end %>
+
+
+   <div class="ln_solid"></div>
+    <div class="form-group">
+      <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+         <%= link_to 'Editar', edit_profesor_path(@profesor), class: "btn btn-primary" %>
+        <%= link_to 'Volver', profesors_path, class: "btn btn-default" %>
+      </div>
+    </div>
+  </form>
+
+<%= render "renders/pruebabot"%>	

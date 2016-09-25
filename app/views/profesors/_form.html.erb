@@ -1,0 +1,85 @@
+<%= form_for(@profesor,:html => {:class => 'form-horizontal form-label-left'}) do |f| %>
+
+  <% if @profesor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profesor.errors.count, "error") %> prohibited this profesor from being saved:</h2>
+
+      <ul>
+      <% @profesor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="form-group">
+      <%= f.label :nombre, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <%= f.text_field :nombre, :class => 'form-control' %>
+      </div>
+  </div>
+  
+  
+ <div class="form-group">
+      <%= f.label :rut, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <%= f.text_field :rut, :class => 'form-control' %>
+      </div>
+  </div>
+  
+   <div class="form-group">
+      <div class="field">
+        <%= f.label :email, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <%= f.email_field :email, autofocus: true, :class => 'form-control' %>
+        </div>
+      </div>
+  </div>
+  
+   <div class="form-group">
+      <div class="field">
+        <%= f.label :Telefono, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <%= f.email_field :telefono, :class => 'form-control' %>
+        </div>
+      </div>
+  </div>
+  
+  <% if @profesor.tipo == 'Completo'|| @valor== 'Completo'  %>
+      <div class="form-group">
+          <%= f.label :numero_horas, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <%= f.number_field :numHrs, :class => 'form-control' %>
+          </div>
+      </div>
+      
+      <%= f.hidden_field :tipo, value:'Completo' %>
+      
+      
+      <div class="form-group">
+          <%= f.label :horas_docencia, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <%= f.number_field :hrsDocencia, :class => 'form-control' %>
+          </div>
+      </div>
+  <% else %>
+    <div class="form-group">
+        <%= f.label :Precio_hora, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <%= f.number_field :precioHora, :class => 'form-control' %>
+        </div>
+    </div>
+    
+    <%= f.hidden_field :tipo, value: 'Honorario' %>
+
+    
+  <% end %>
+
+<%= params.inspect %> <%= @valor %>
+
+ <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+        <%= f.submit class: "btn btn-primary" %>
+  
+<% end %>

@@ -1,0 +1,84 @@
+<%= render "renders/pruebatop"%>	
+  <h2>Administrar Profesores</h2>
+<%= render "renders/pruebamid"%>	
+<p id="notice"><%= notice %></p>
+<table id="tabla_profesor" class="table table-striped projects">
+  <thead>
+    <tr>
+      <th style="width: 1%" >#</th>
+      <th style="width: 20%">Nombre</th>
+      <th style="width: 20%">Email</th>
+      <th style="width: 20%">Rut</th>
+      <th style="width: 20%">Tipo</th>
+
+      <th style="width: 20%">#Accion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profesors.each do |profesor| %>
+      <tr>
+        <td>#</td>
+        <td><%= profesor.nombre ? profesor.nombre : " - " %></td>
+        <td><%= profesor.email ? profesor.email : " - " %></td>
+        <td><%= profesor.rut ? profesor.rut : " - " %></td>
+        <td><%= profesor.tipo ? profesor.tipo : " - " %></td>
+
+
+
+        <td>
+          <%= link_to '<i class="fa fa-folder"></i> Ver'.html_safe, profesor, class: "btn btn-primary btn-xs"  %>
+          <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, edit_profesor_path(profesor), class: "btn btn-info btn-xs"  %>
+          <%= link_to '<i class="fa fa-pencil"></i> Eliminar'.html_safe, profesor,method: :delete, data: { confirm: '¿Confirma que desea eliminar al Profesor?' }, class: "btn btn-danger btn-xs"  %>
+        </td>
+        
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</br>
+<div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+    <%= link_to 'Crear Profesor T. Completo', new_profesor_path, class: "btn btn-primary"%>
+    <%= link_to 'Crear Profesor Honorario', new1_profesors_path, class: "btn btn-success"%>
+
+    </div>
+  </div>
+
+
+<%= render "renders/pruebabot"%>
+
+<!--Test Page specific JS -->
+<script>
+  
+  $('#tabla_profesor').DataTable( {
+    responsive: true,
+    "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ registros",
+        "sZeroRecords":   "No se encontraron resultados",
+        "sEmptyTable":    "Ningún dato disponible en esta tabla",
+        "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+} );
+</script>
