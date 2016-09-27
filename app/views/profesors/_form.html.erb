@@ -2,7 +2,7 @@
 
   <% if @profesor.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@profesor.errors.count, "error") %> prohibited this profesor from being saved:</h2>
+      <h2><%= pluralize(@profesor.errors.count, "error") %> al intentar guardar los cambios:</h2>
 
       <ul>
       <% @profesor.errors.full_messages.each do |message| %>
@@ -15,7 +15,7 @@
  <div class="form-group">
       <%= f.label :nombre, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
       <div class="col-md-9 col-sm-9 col-xs-12">
-        <%= f.text_field :nombre, :class => 'form-control' %>
+        <%= f.text_field :nombre, autofocus: true,:class => 'form-control' %>
       </div>
   </div>
   
@@ -31,7 +31,7 @@
       <div class="field">
         <%= f.label :email, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
         <div class="col-md-9 col-sm-9 col-xs-12">
-          <%= f.email_field :email, autofocus: true, :class => 'form-control' %>
+          <%= f.email_field :email, :class => 'form-control' %>
         </div>
       </div>
   </div>
@@ -40,7 +40,7 @@
       <div class="field">
         <%= f.label :Telefono, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
         <div class="col-md-9 col-sm-9 col-xs-12">
-          <%= f.email_field :telefono, :class => 'form-control' %>
+          <%= f.text_field :telefono, :class => 'form-control' %>
         </div>
       </div>
   </div>

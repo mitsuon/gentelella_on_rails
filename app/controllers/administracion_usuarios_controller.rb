@@ -1,5 +1,6 @@
 class AdministracionUsuariosController < ApplicationController
   before_action :set_user, only: [:activar, :bloquear, :destroy]
+  before_action :validate_usuario
   
   def index
     @usuarios = Usuario.all

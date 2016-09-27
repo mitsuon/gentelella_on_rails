@@ -1,36 +1,28 @@
-<%= render "renders/pruebatop"%>	
-  <h2>Ver Carrera</h2>
-<%= render "renders/pruebamid"%>	
-  <p id="notice"><%= notice %></p>
-  <form class="form-horizontal form-label-left">
-    <div class="form-group">
-      <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre </label>
-      <div class="col-md-9 col-sm-9 col-xs-12">
-        <input type="text" class="form-control" disabled="disabled" placeholder="<%= @carrera.nombre %>">
-      </div>
-    </div>
-    <% if @carrera.mallas.present? %>
-      <table>
-        <thead>
-          <tr>
-            <th>Mallas asociadas</th>
-            <th colspan="4"></th>
-          </tr>
-        </thead>
-      
-        <tbody>
-          <% @carrera.mallas.each do |malla| %>
-            <tr>
-              <td><%= link_to malla.plan, malla %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% else %>
+<%= render "renders/pruebatop"%>
+<h2>Ver Carrera</h2>
+<%= render "renders/pruebamid"%>
+<p id="notice"><%= notice %></p>
+
+<form class="form-horizontal form-label-left">
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @carrera.nombre %>">
+    </div> 
+  </div>
+  
+   <% @carrera.mallas.each do |malla| %>
       <div class="form-group">
-         <label class="label label-warning">Carrera sin mallas asociadas </label>
-     </div>
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Plan Asociado: </label>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <input type="text" class="form-control" disabled="disabled" placeholder="<%= malla.plan %>">
+         
+        </div> 
+      </div>
+  
     <% end %>
+
+
    <div class="ln_solid"></div>
     <div class="form-group">
       <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
@@ -39,6 +31,5 @@
       </div>
     </div>
   </form>
-<%= render "renders/pruebabot"%>	
-    
 
+<%= render "renders/pruebabot"%>	

@@ -33,6 +33,13 @@
     </div> 
   </div>
   
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.tipo %>">
+    </div> 
+  </div>
+  
   <%if @profesor.tipo=='Completo' %>
         <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Número horas </label>
@@ -56,6 +63,8 @@
       </div> 
   
   <% end %>
+
+
 
 
    <div class="ln_solid"></div>

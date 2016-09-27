@@ -47,7 +47,8 @@ class ProfesorsController < ApplicationController
 
     respond_to do |format|
       if @profesor.save
-        format.html { redirect_to @profesor, notice: 'Profesor was successfully created.' }
+        flash[:success] = 'Profesor creado exitosamente'
+        format.html { redirect_to @profesor }
         format.json { render :show, status: :created, location: @profesor }
       else
         format.html { render :new }
@@ -61,9 +62,11 @@ class ProfesorsController < ApplicationController
   def update
     respond_to do |format|
       if @profesor.update(profesor_params)
-        format.html { redirect_to @profesor, notice: 'Profesor was successfully updated.' }
+        flash[:success] = 'Profesor actualizado exitosamente'
+        format.html { redirect_to @profesor }
         format.json { render :show, status: :ok, location: @profesor }
       else
+        flash[:error] = @profesor.errors.full_messages
         format.html { render :edit }
         format.json { render json: @profesor.errors, status: :unprocessable_entity }
       end
@@ -75,7 +78,8 @@ class ProfesorsController < ApplicationController
   def destroy
     @profesor.destroy
     respond_to do |format|
-      format.html { redirect_to profesors_url, notice: 'Profesor was successfully destroyed.' }
+      flash[:success] = 'Profesor eliminado exitosamente'
+      format.html { redirect_to profesors_url }
       format.json { head :no_content }
     end
   end
