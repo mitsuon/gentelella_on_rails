@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  modulo_id: 
+  nombre: MyString
+  hrsLab: 1
+  hrsCatedra: 1
+
+two:
+  modulo_id: 
+  nombre: MyString
+  hrsLab: 1
+  hrsCatedra: 1

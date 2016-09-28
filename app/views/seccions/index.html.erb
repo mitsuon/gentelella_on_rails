@@ -1,35 +1,37 @@
 <%= render "renders/pruebatop"%>	
-  <h2>Administrar Módulos</h2>
+  <h2>Administrar Secciones</h2>
 <%= render "renders/pruebamid"%>	
 
-<table id="tabla_modulos" class="table table-striped projects">
+<table id="tabla_secciones" class="table table-striped projects">
 
   <thead>
     <tr>
       <th style="width: 1%">#</th>
-      <th>Nombre</th>
-      <th>Codigo</th>
-      <th>Creditos</th>
-      <th>Nivel</th>
+      <th>Nombre Sección</th>
+      <th>Módulo</th>
       <th>Plan</th>
+      <th>Carrera</th>
+      <th>Horas Laboratorio</th>
+      <th>Horas Cátedra</th>
       <th>Accion</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @modulos.each do |modulo| %>
+    <% @seccions.each do |seccion| %>
       <tr>
         <td>#</td>
-        <td><%= modulo.nombre %></td>
-        <td><%= modulo.codigo %></td>
-        <td><%= modulo.creditos %></td>
-        <td><%= modulo.nivel %></td>
-        <td><%= modulo.malla ? modulo.malla.plan : "Sin plan asociado" %></td>
+        <td><%= seccion.nombre %></td>
+        <td><%= seccion.modulo ? seccion.modulo.nombre : "Sin módulo asociado" %></td>
+        <td><%= seccion.modulo.malla ? seccion.modulo.malla.plan  : "Sin plan asociado" %></td>
+        <td><%= seccion.modulo.malla.respond_to?(:carrera) ?  seccion.modulo.malla.carrera.nombre : "Sin carrera asociada" %></td>
+        <td><%= seccion.hrsLab %></td>
+        <td><%= seccion.hrsCatedra %></td>
 
       <td>
-          <%= link_to '<i class="fa fa-folder"></i> Ver'.html_safe, modulo, class: "btn btn-primary btn-xs"  %>
-          <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, edit_modulo_path(modulo), class: "btn btn-info btn-xs"  %>
-          <%= link_to '<i class="fa fa-pencil"></i> Eliminar'.html_safe, modulo,method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"  %>
+          <%= link_to '<i class="fa fa-folder"></i> Ver'.html_safe, seccion, class: "btn btn-primary btn-xs"  %>
+          <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, edit_seccion_path(seccion), class: "btn btn-info btn-xs"  %>
+          <%= link_to '<i class="fa fa-pencil"></i> Eliminar'.html_safe, seccion,method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"  %>
       </td>
       </tr>
     <% end %>
@@ -40,7 +42,7 @@
 <div class="ln_solid"></div>
   <div class="form-group">
     <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-    <%= link_to 'Crear Modulo', new_modulo_path, class: "btn btn-success"%>
+    <%= link_to 'Crear Sección', new_seccion_path, class: "btn btn-success"%>
     </div>
   </div>
 
@@ -50,7 +52,7 @@
 <!--Test Page specific JS -->
 <script>
   
-  $('#tabla_modulos').DataTable( {
+  $('#tabla_secciones').DataTable( {
     responsive: true,
     "language": {
         "sProcessing":    "Procesando...",

@@ -1,0 +1,29 @@
+<%= render "renders/pruebatop"%>
+<h2>Ver Seccion</h2>
+<%= render "renders/pruebamid"%>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Modulo!!!:</strong>
+  <%= @seccion.modulo %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @seccion.nombre %>
+</p>
+
+<p>
+  <strong>Hrslab:</strong>
+  <%= @seccion.hrsLab %>
+</p>
+
+<p>
+  <strong>Hrscatedra:</strong>
+  <%= @seccion.hrsCatedra %>
+</p>
+
+<%= link_to 'Edit', edit_seccion_path(@seccion) %> |
+<%= link_to 'Back', seccions_path %>
+
+<%= render "renders/pruebabot"%>	

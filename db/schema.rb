@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925044857) do
+ActiveRecord::Schema.define(version: 20160927025134) do
 
   create_table "carreras", force: :cascade do |t|
     t.string   "nombre"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 20160925044857) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "seccions", force: :cascade do |t|
+    t.integer  "modulo_id"
+    t.string   "nombre"
+    t.integer  "hrsLab"
+    t.integer  "hrsCatedra"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "seccions", ["modulo_id"], name: "index_seccions_on_modulo_id"
 
   create_table "usuarios", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

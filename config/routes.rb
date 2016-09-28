@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :seccions
   resources :profesors do
   collection do
     get 'new1'

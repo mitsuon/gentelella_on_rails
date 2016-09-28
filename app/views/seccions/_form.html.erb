@@ -1,0 +1,50 @@
+<%= form_for(@seccion,:html => {:class => 'form-horizontal form-label-left'}) do |f| %>
+
+  <% if @seccion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@seccion.errors.count, "error") %> prohibited this seccion from being saved:</h2>
+
+      <ul>
+      <% @seccion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+   <div class="form-group">
+      <%= f.label :nombre_seccion, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <%= f.text_field :nombre, :class => 'form-control' %>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :modulo_id,:class =>'control-label col-md-3 col-sm-3 col-xs-12' %> 
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <%= f.select :modulo_id, Modulo.all.collect {|m| [ modulo_detail(m), m.id ] }, {:include_blank => false}, {:class => 'form-control'}%>
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <%= f.label :Horas_laboratorio, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <%= f.number_field :hrsLab, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :Horas_catedra, :class =>'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <%= f.number_field :hrsCatedra, :class => 'form-control' %>
+      </div>
+  </div>
+  
+  
+  <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+        <%= f.submit class: "btn btn-primary" %>  
+
+<% end %>
