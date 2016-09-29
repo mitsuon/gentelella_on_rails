@@ -42,7 +42,7 @@
  <div class="form-group">
     <%= f.label :malla_id,:class =>'control-label col-md-3 col-sm-3 col-xs-12' %> 
     <div class="col-md-9 col-sm-9 col-xs-12">
-    <%= f.select :malla_id, Malla.all.collect {|c| [ get_carrera(c), c.id ] }, {:include_blank => true}, {:class => 'form-control'}%>
+    <%= f.select :malla_id, Malla.all.collect {|c| [ get_carrera_from_malla(c), c.id ] }, {:include_blank => false}, {:class => 'form-control'}%>
     </div>
   </div>
 

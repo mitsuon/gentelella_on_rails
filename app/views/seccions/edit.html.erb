@@ -3,7 +3,9 @@
 <%= render "renders/pruebamid"%>
 <%= render 'form' %>
 
-<%= link_to 'Show', @seccion %> |
-<%= link_to 'Back', seccions_path %>
+
+<%= link_to 'Ver', @seccion, class: "btn btn-info" %>
+<%= link_to 'Volver', seccions_path, class: "btn btn-default" %>
+
 <%= render "renders/pruebabot"%>	
 

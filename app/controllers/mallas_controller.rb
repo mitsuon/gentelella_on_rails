@@ -11,6 +11,7 @@ class MallasController < ApplicationController
   # GET /mallas/1
   # GET /mallas/1.json
   def show
+    @modulos = Modulo.all
   end
 
   # GET /mallas/new

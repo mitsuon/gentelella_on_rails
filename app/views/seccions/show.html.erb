@@ -3,27 +3,44 @@
 <%= render "renders/pruebamid"%>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Modulo!!!:</strong>
-  <%= @seccion.modulo %>
-</p>
+<form class="form-horizontal form-label-left">
+  
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Sección </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @seccion.nombre %>">
+    </div> 
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Módulo </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @seccion.modulo.nombre %>">
+    </div> 
+  </div>
+  
+   <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Horas Laboratorio </label>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+          <input type="text" class="form-control" disabled="disabled" placeholder="<%= @seccion.hrsLab %>">
+      </div>
+  </div>   
+  
+   <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Horas cátedra </label>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+          <input type="text" class="form-control" disabled="disabled" placeholder="<%= @seccion.hrsCatedra %>">
+      </div>
+  </div> 
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @seccion.nombre %>
-</p>
 
-<p>
-  <strong>Hrslab:</strong>
-  <%= @seccion.hrsLab %>
-</p>
+   <div class="ln_solid"></div>
+    <div class="form-group">
+      <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+         <%= link_to 'Editar', edit_seccion_path(@seccion), class: "btn btn-primary" %>
+        <%= link_to 'Volver', seccions_path, class: "btn btn-default" %>
+      </div>
+    </div>
 
-<p>
-  <strong>Hrscatedra:</strong>
-  <%= @seccion.hrsCatedra %>
-</p>
-
-<%= link_to 'Edit', edit_seccion_path(@seccion) %> |
-<%= link_to 'Back', seccions_path %>
-
+</form>
 <%= render "renders/pruebabot"%>	

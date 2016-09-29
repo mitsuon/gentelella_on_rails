@@ -22,11 +22,13 @@
       <tr>
         <td>#</td>
         <td><%= seccion.nombre %></td>
-        <td><%= seccion.modulo ? seccion.modulo.nombre : "Sin módulo asociado" %></td>
-        <td><%= seccion.modulo.malla ? seccion.modulo.malla.plan  : "Sin plan asociado" %></td>
-        <td><%= seccion.modulo.malla.respond_to?(:carrera) ?  seccion.modulo.malla.carrera.nombre : "Sin carrera asociada" %></td>
+        <td><%=  get_modulo(seccion) %></td>
+        <td><%= get_plan(seccion) %></td>
+        <td><%=  get_carrera(seccion) %></td>
         <td><%= seccion.hrsLab %></td>
         <td><%= seccion.hrsCatedra %></td>
+        
+
 
       <td>
           <%= link_to '<i class="fa fa-folder"></i> Ver'.html_safe, seccion, class: "btn btn-primary btn-xs"  %>
