@@ -1,0 +1,83 @@
+<%= render "renders/pruebatop"%>	
+  <h2>Mis Solicitudes</h2>
+<%= render "renders/pruebamid"%>	
+
+
+<table id="tabla_solicitudes" class="table table-striped projects">
+  <thead>
+    <tr>
+      <th style="width: 1%">#</th>
+      <th>Nombre Usuario</th>
+      <th>Módulo</th>
+      <th>Sección</th>
+      <th>Plan</th>
+      <th>Carrera</th>
+      <th>Año</th>
+      <th>Semestre</th>
+     <th>Estado</th>
+      <th>Accion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @solicitudes.each do |solicitud| %>
+      <tr>
+        <td>#</td>
+        <td><%= solicitud.usuario.nombre %></td>
+        <td><%= get_modulo(solicitud.seccion) %></td>
+        <td><%= solicitud.seccion.nombre %></td>
+        <td><%= get_plan(solicitud.seccion) %></td>
+        <td><%=  get_carrera(solicitud.seccion) %></td>
+        <td><%= solicitud.anio %></td>
+        <td><%= solicitud.semestre %></td>
+         <td><%= solicitud.estado %></td>
+      <td>
+        
+          <% if current_usuario.tipo=="Administrador" %>
+            <%= link_to '<i class="fa fa-check-circle"></i> Aceptar'.html_safe, solicitar_seccions_activar_path(solicitud), class: "btn btn-primary btn-xs"  %>
+            <%= link_to '<i class="fa fa-ban"></i> Rechazar'.html_safe, solicitar_seccions_rechazar_path(solicitud), class: "btn btn-warning btn-xs"  %>
+            <%= link_to '<i class="fa fa-remove"></i> Eliminar'.html_safe, solicitar_seccions_destroy_solicitud_path(solicitud),method: :delete, data: { confirm: '¿Seguro que desea eliminar esta Solicitud?' }, class: "btn btn-danger btn-xs"  %>
+
+          <% else %>
+            <%= link_to '<i class="fa fa-remove"></i> Eliminar'.html_safe, solicitar_seccions_destroy_solicitud_path(solicitud),method: :delete, data: { confirm: '¿Seguro que desea eliminar esta Solicitud?' }, class: "btn btn-danger btn-xs"  %>
+          <% end %>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+ <%= render "renders/pruebabot"%>
+
+
+<!--Test Page specific JS -->
+<script>
+  
+  $('#tabla_solicitudes').DataTable( {
+    responsive: true,
+    "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ registros",
+        "sZeroRecords":   "No se encontraron resultados",
+        "sEmptyTable":    "Ningún dato disponible en esta tabla",
+        "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+} );
+</script>

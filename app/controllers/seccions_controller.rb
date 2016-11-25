@@ -7,6 +7,31 @@ class SeccionsController < ApplicationController
     @seccions = Seccion.all
   end
 
+ 
+
+  # GET /seccions/solicitud
+  def solicitud
+    @seccions = Seccion.all
+    @solicitud = SolicitarSeccion.new
+  end
+
+  def mis_solicitudes
+    if current_usuario.tipo == "Administrador"
+       @seccions = Seccion.all
+       @solicitud = SolicitarSeccion.new
+    else
+       @solicitud = SolicitarSeccion.new
+    end
+
+  end
+
+
+  def prueba
+      flash[:success] = 'Profesor creado exitosamente'
+      redirect_to seccions_solicitud_path
+
+  end
+
   # GET /seccions/1
   # GET /seccions/1.json
   def show
@@ -69,6 +94,6 @@ class SeccionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seccion_params
-      params.require(:seccion).permit(:modulo_id, :nombre, :hrsLab, :hrsCatedra)
+      params.require(:seccion).permit(:modulo_id, :nombre, :hrsLab, :hrsCatedra, :anio, :semestre)
     end
 end

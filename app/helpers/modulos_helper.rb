@@ -7,6 +7,14 @@ module ModulosHelper
       end
     end   
     
+    def contains_espejo(yo, modulo)
+      yo.yo_mirror.each do |espejo|
+        if espejo.reflector_id == modulo.id
+          return true
+        end
+      end
+      return false
+    end   
     
     
 end

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mirror_id: 
+  reflector_id: 
+
+two:
+  mirror_id: 
+  reflector_id: 

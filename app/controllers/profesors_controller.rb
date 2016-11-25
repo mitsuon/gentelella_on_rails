@@ -6,6 +6,14 @@ class ProfesorsController < ApplicationController
   def index
     @profesors = Profesor.all
   end
+  
+  def honorario
+    @profesors = Profesor.where(:tipo => "Honorario")
+  end
+
+  def tiempo_completo
+    @profesors = Profesor.where(:tipo => "Completo")
+  end
 
   # GET /profesors/1
   # GET /profesors/1.json

@@ -1,6 +1,26 @@
-<%= render "renders/pruebatop"%>	
-  <h2>Administrar Módulos</h2>
-<%= render "renders/pruebamid"%>	
+<%= render "renders/pruebatop"%>
+<h2>Editar Espejo</h2>
+<%= render "renders/pruebamid"%>
+
+<form class="form-horizontal form-label-left">
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @modulo.nombre %>">
+    </div> 
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Código </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @modulo.codigo %>">
+    </div> 
+  </div>
+</form>
+
+<h2>Espejos</h2>
+ 
+<div class="ln_solid"></div>
 
 <table id="tabla_modulos" class="table table-striped projects">
   <thead>
@@ -20,6 +40,8 @@
 
   <tbody>
     <% @modulos.each do |modulo| %>
+    <% if @modulo == modulo %>
+    <% else %>
       <tr>
         <td>#</td>
         <td><%= modulo.nombre %></td>
@@ -33,34 +55,31 @@
         <% if modulo.yo_mirror.size > 0 %>
           <td>
             <% modulo.yo_mirror.each do |mirror| %>
-              <%= mirror.reflector.nombre+": " + mirror.reflector.codigo %><br></br>
+            <%= mirror.reflector.nombre+": " + mirror.reflector.codigo %> <br></br>
             <% end %>
           </td>
         <% else %>
           <td></td>
         <% end %>
       <td>
-          <%= link_to '<i class="fa fa-folder"></i> Ver'.html_safe, modulo, class: "btn btn-primary btn-xs"  %>
-          <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, edit_modulo_path(modulo), class: "btn btn-info btn-xs"  %>
-          <%= link_to '<i class="fa fa-pencil"></i> Editar Espejo'.html_safe, editar_espejo_modulos_path(modulo), class: "btn btn-success btn-xs"  %>
-
-          <%= link_to '<i class="fa fa-remove"></i> Eliminar'.html_safe, modulo,method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"  %>
+        <% id = @modulo.id %>
+        <% if contains_espejo(@modulo,modulo) %>
+          <%= link_to '<i class="fa fa-remove"></i> Eliminar Espejo'.html_safe, eliminar_espejo_path(@modulo,modulo), class: "btn btn-danger btn-xs"  %>
+        <% else %>
+          <%= link_to '<i class="fa fa-plus"></i> Agregar Espejo'.html_safe,agregar_espejo_path(@modulo,modulo), class: "btn btn-primary btn-xs"  %>
+        <% end %>
+          
       </td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
-</br>
-<div class="ln_solid"></div>
-  <div class="form-group">
-    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-    <%= link_to 'Crear Modulo', new_modulo_path, class: "btn btn-success"%>
-    </div>
-  </div>
 
- <%= render "renders/pruebabot"%>
+<%= params.inspect %>
 
+<%= render "renders/pruebabot"%>
 
 <!--Test Page specific JS -->
 <script>

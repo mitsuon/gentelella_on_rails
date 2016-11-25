@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927025134) do
+ActiveRecord::Schema.define(version: 20161120221706) do
 
   create_table "carreras", force: :cascade do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "espejos", force: :cascade do |t|
+    t.integer  "mirror_id"
+    t.integer  "reflector_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "espejos", ["mirror_id"], name: "index_espejos_on_mirror_id"
+  add_index "espejos", ["reflector_id"], name: "index_espejos_on_reflector_id"
 
   create_table "mallas", force: :cascade do |t|
     t.string   "plan"
@@ -36,6 +46,14 @@ ActiveRecord::Schema.define(version: 20160927025134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "malla_id"
+  end
+
+  create_table "presupuestos", force: :cascade do |t|
+    t.integer  "monto"
+    t.integer  "semestre"
+    t.integer  "anio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profesors", force: :cascade do |t|
@@ -61,6 +79,19 @@ ActiveRecord::Schema.define(version: 20160927025134) do
   end
 
   add_index "seccions", ["modulo_id"], name: "index_seccions_on_modulo_id"
+
+  create_table "solicitar_seccions", force: :cascade do |t|
+    t.string   "estado"
+    t.integer  "anio"
+    t.integer  "semestre"
+    t.integer  "usuario_id"
+    t.integer  "seccion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "solicitar_seccions", ["seccion_id"], name: "index_solicitar_seccions_on_seccion_id"
+  add_index "solicitar_seccions", ["usuario_id"], name: "index_solicitar_seccions_on_usuario_id"
 
   create_table "usuarios", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

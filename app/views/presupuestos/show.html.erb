@@ -1,0 +1,86 @@
+<%= render "renders/pruebatop"%>
+<h2>Ver Presupuesto</h2>
+<%= render "renders/pruebamid"%>
+<p id="notice"><%= notice %></p>
+
+<form class="form-horizontal form-label-left">
+
+
+<center>
+<div style="border:1px opaque solid; width:150px">
+    <div class="sidebar-widget">
+      <h4> <center> Total </center></h4>
+      <canvas width="150" height="80" id="foo" class="" style="width: 160px; height: 100px;"></canvas>
+      <div class="goal-wrapper">
+        <span class="gauge-value pull-left">$</span>
+        <span id="gauge-text" class="gauge-value pull-left"><%= @valor %></span>
+        <span id="goal-text" class='goal-value pull-right'>$<%= @presupuesto.monto %></span>
+      </div>
+    </div>
+</div>
+</center>
+
+   <br>
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Año </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @presupuesto.anio %>">
+    </div> 
+  </div>
+  
+   <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Semestre </label>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+          <input type="text" class="form-control" disabled="disabled" placeholder="<%= @presupuesto.semestre %>">
+      </div>
+  </div>   
+  
+   <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Monto</label>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+          <input type="text" class="form-control" disabled="disabled" placeholder="<%= @presupuesto.monto %>">
+      </div>
+  </div> 
+
+
+   <div class="ln_solid"></div>
+    <div class="form-group">
+      <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+         <%= link_to 'Editar', edit_presupuesto_path(@presupuesto), class: "btn btn-primary" %>
+        <%= link_to 'Volver', presupuestos_path, class: "btn btn-default" %>
+      </div>
+    </div>
+
+</form>
+<%= render "renders/pruebabot"%>	
+
+<script>
+  
+      var opts = {
+          lines: 12,
+          angle: 0,
+          lineWidth: 0.4,
+          pointer: {
+              length: 0.75,
+              strokeWidth: 0.042,
+              color: '#1D212A'
+          },
+          
+          limitMax: 'false',
+          colorStart: '#1ABC9C',
+          colorStop: '#1ABC9C',
+          strokeColor: '#F0F3F3',
+          generateGradient: true
+      };
+      var target = document.getElementById('foo'),
+          gauge = new Gauge(target).setOptions(opts);
+
+      gauge.maxValue = '<%= @presupuesto.monto %>';
+      gauge.animationSpeed = 32;
+      var valorgastado = <%= @valor %>
+      gauge.set(valorgastado);
+      gauge.setTextField(document.getElementById("gauge-text"));
+  
+</script>
+
+   

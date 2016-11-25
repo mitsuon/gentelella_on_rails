@@ -1,31 +1,51 @@
 Rails.application.routes.draw do
-  resources :seccions
+  resources :presupuestos
+  resources :solicitar_seccions do
+    collection do
+      get 'index'
+    end
+  end
+  resources :seccions do
+    collection do
+      get 'solicitud'
+      get 'mis_solicitudes'
+      
+    end
+  end
   resources :profesors do
   collection do
     get 'new1'
+    get 'honorario'
+    get 'tiempo_completo'
   end
 end
   
   get 'administracion_usuarios/index'
-
+  get 'seccions/index2'
   get 'administracion_usuarios/activar/:id' => "administracion_usuarios#activar", as: :administracion_usuarios_activar
   get 'administracion_usuarios/bloquear/:id' => "administracion_usuarios#bloquear", as: :administracion_usuarios_bloquear
   match 'administracion_usuarios/:id' => 'administracion_usuarios#destroy', :via => :delete, :as => :administracion_usuarios_destroy_user
 
+  get 'solicitar_seccions/index/aceptar/:id' => "solicitar_seccions#aceptar", as: :solicitar_seccions_activar
+  get 'solicitar_seccions/index/rechazar/:id' => "solicitar_seccions#rechazar", as: :solicitar_seccions_rechazar
+  match 'solicitar_seccions/index/:id' => "solicitar_seccions#destroy", :via => :delete, :as => :solicitar_seccions_destroy_solicitud
+  
+  get 'modulos/editar_espejo/:id' => "modulos#editar_espejo", as: :editar_espejo_modulos
+
+  get 'modulos/agregar_espejo/:id/:espejo' => "modulos#agregar_espejo", as: :agregar_espejo
+  get 'modulos/eliminar_espejo/:id/:espejo' => "modulos#eliminar_espejo", as: :eliminar_espejo
+
+
+  post 'solicitar_seccions/index' => "solicitar_seccions#create"
 
   devise_for :usuarios,:controllers =>{
     :registrations => "usuarios/registrations",
   }
   
   resources :administracion_usuarios
-  resources :modulos
+  resources :modulos 
   resources :mallas
   resources :carreras
-  get 'carreras/index'
-  get 'carreras/show'
-  get 'carreras/new'
-  get 'carreras/edit'
-  get 'carreras/delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

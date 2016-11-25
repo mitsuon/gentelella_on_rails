@@ -51,9 +51,9 @@
                   <ul class="nav child_menu" style="display: none">
                     <li class="sub_menu"><a href='<%= profesors_path %>'>Administrar Profesores</a>
                     </li>
-                    <li class="sub_menu"><a href="level2.html">Tiempo Completo</a>
+                    <li class="sub_menu"><a href="<%= tiempo_completo_profesors_path %>">Tiempo Completo</a>
                     </li>
-                    <li><a href="#"> Honorario</a>
+                    <li><a href="<%= honorario_profesors_path %>"> Honorario</a>
                     </li>
                   </ul>
                 </li>
@@ -63,9 +63,10 @@
          
             <li><a><i class="fa fa-edit"></i> Solicitudes <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
-               <li><a href="#">Ver Solicitudes</a>
+                 <li><a href="<%=solicitar_seccions_path %>">Ver Solicitudes</a>
                 </li>
-                <li><a href="#">Crear Solicitud</a>
+                <li><a href="<%=solicitud_seccions_path %>">Crear Solicitud</a>
+
                 </li>
               </ul>
             </li>
@@ -73,7 +74,7 @@
  
             <li><a><i class="fa fa-bar-chart-o"></i> Presupuesto <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
-                <li><a href="#">Administrar Presupuesto</a>
+                 <li><a href="<%= presupuestos_path %>"> Administrar Presupuestos</a>
                 </li>
               </ul>
             </li>
@@ -89,10 +90,12 @@
           <% else %>
             <li><a><i class="fa fa-edit"></i> Solicitudes <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
-               <li><a href="#">Ver Solicitudes</a>
+               <li><a href="<%=solicitar_seccions_path %>">Ver Solicitudes</a>
                 </li>
-                <li><a href="#">Crear Solicitud</a>
+                <li><a href="<%=solicitud_seccions_path %>">Crear Solicitud</a>
+
                 </li>
+               
               </ul>
             </li>
           <% end %>

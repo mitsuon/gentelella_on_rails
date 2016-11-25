@@ -1,38 +1,35 @@
 <%= render "renders/pruebatop"%>	
-  <h2>Administrar Secciones</h2>
+  <h2>Administrar Presupuesto</h2>
 <%= render "renders/pruebamid"%>	
 
-<table id="tabla_secciones" class="table table-striped projects">
+<p id="notice"><%= notice %></p>
 
+
+<table id="tabla_presupuesto" class="table table-striped projects">
   <thead>
     <tr>
       <th style="width: 1%">#</th>
-      <th>Nombre Sección</th>
-      <th>Módulo</th>
-      <th>Plan</th>
-      <th>Carrera</th>
-      <th>Horas Laboratorio</th>
-      <th>Horas Cátedra</th>
+      <th>Año</th>
+      <th>Semestre</th>
+      <th>Monto</th>
       <th>Accion</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @seccions.each do |seccion| %>
+    <% @presupuestos.each do |presupuesto| %>
       <tr>
         <td>#</td>
-        <td><%= seccion.nombre %></td>
-        <td><%=  get_modulo(seccion) %></td>
-        <td><%= get_plan(seccion) %></td>
-        <td><%=  get_carrera(seccion) %></td>
-        <td><%= seccion.hrsLab %></td>
-        <td><%= seccion.hrsCatedra %></td>
-      <td>
-
-          <%= link_to '<i class="fa fa-folder"></i> Ver'.html_safe, seccion, class: "btn btn-primary btn-xs"  %>
-          <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, edit_seccion_path(seccion), class: "btn btn-info btn-xs"  %>
-          <%= link_to '<i class="fa fa-remove"></i> Eliminar'.html_safe, seccion,method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"  %>
-      </td>
+        <td><%= presupuesto.anio %></td>
+        <td><%= presupuesto.semestre %></td>
+        <td><%= presupuesto.monto %></td>
+        
+        <td>
+          <%= link_to '<i class="fa fa-folder"></i> Ver'.html_safe, presupuesto, class: "btn btn-primary btn-xs"  %>
+          <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, edit_presupuesto_path(presupuesto), class: "btn btn-info btn-xs"  %>
+          <%= link_to '<i class="fa fa-pencil"></i> Eliminar'.html_safe, presupuesto,method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"  %>
+      
+                  </td>
       </tr>
     <% end %>
   </tbody>
@@ -42,7 +39,7 @@
 <div class="ln_solid"></div>
   <div class="form-group">
     <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-    <%= link_to 'Crear Sección', new_seccion_path, class: "btn btn-success"%>
+    <%= link_to 'Crear Presupuesto', new_presupuesto_path, class: "btn btn-success"%>
     </div>
   </div>
 
@@ -52,7 +49,7 @@
 <!--Test Page specific JS -->
 <script>
   
-  $('#tabla_secciones').DataTable( {
+  $('#tabla_presupuesto').DataTable( {
     responsive: true,
     "language": {
         "sProcessing":    "Procesando...",
@@ -80,3 +77,5 @@
     }
 } );
 </script>
+
+
