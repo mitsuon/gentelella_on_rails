@@ -37,6 +37,26 @@ end
 
 
   post 'solicitar_seccions/index' => "solicitar_seccions#create"
+  
+  
+  get 'asignar/profesor/:profesor_id/semestre/:semestre/anio/:anio' => "profesors#asignar" , as: :asignar
+  get 'visualizar_honorario/profesor/:profesor_id/semestre/:semestre/anio/:anio' => "profesors#visualizar_honorario" , as: :visualizar_honorario
+  
+  
+  post 'asignar' => "profesors#guardar_asignar", as: :guardar_asignar
+  post 'quitar' => "profesors#quitar_asignar", as: :quitar_asignar
+
+  post 'visualizar_honorario' => "profesors#guardar_visualizar_honorario", as: :guardar_visualizar_honorario
+  
+  
+  get 'tiempo_completo/asignar/profesor/:profesor_id/semestre/:semestre/anio/:anio' => "profesors#tiempo_completo_asignar" , as: :tiempo_completo_asignar
+  get 'tiempo_completo/visualizar/profesor/:profesor_id/semestre/:semestre/anio/:anio' => "profesors#tiempo_completo_visualizar" , as: :tiempo_completo_visualizar
+  
+  post 'tiempo_completo/asignar' => "profesors#guardar_tiempo_completo_asignar", as: :guardar_tiempo_completo_asignar
+  post 'tiempo_completo/visualizar_honorario' => "profesors#guardar_tiempo_completo_visualizar", as: :guardar_tiempo_completo_visualizar
+  
+  
+  
 
   devise_for :usuarios,:controllers =>{
     :registrations => "usuarios/registrations",

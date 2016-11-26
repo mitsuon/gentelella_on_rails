@@ -1,0 +1,80 @@
+<%= render "renders/pruebatop"%>	
+  <h2>Asignar Seccion </h2>
+<%= render "renders/pruebamid"%>	
+
+
+
+
+<table id="tabla_secciones" class="table table-striped projects">
+
+  <thead>
+    <tr>
+      <th style="width: 1%">#</th>
+      <th>Nombre Sección</th>
+      <th>Módulo</th>
+      <th>Plan</th>
+      <th>Carrera</th>
+      <th>Horas Laboratorio</th>
+      <th>Horas Cátedra</th>
+      <th>Accion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @secciones.each do |seccion| %>
+      <tr>
+        <td>#</td>
+        <td><%= seccion.nombre %></td>
+        <td><%=  get_modulo(seccion) %></td>
+        <td><%= get_plan(seccion) %></td>
+        <td><%=  get_carrera(seccion) %></td>
+        <td><%= seccion.hrsLab %></td>
+        <td><%= seccion.hrsCatedra %></td>
+      <td>
+
+          <%= link_to '<i class="fa fa-folder"></i> Asignar'.html_safe, guardar_asignar_path(:profesor_id=> @profesor.id,:seccion => seccion.id , :semestre => @semestre , :anio => @anio),  method: :post ,class: "btn btn-primary btn-xs"  %>
+         
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Volver', profesors_path, class: "btn btn-default" %>
+  </div>
+ </div>
+<%= render "renders/pruebabot"%>
+
+<script>
+  
+  $('#tabla_secciones').DataTable( {
+    responsive: true,
+    "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ registros",
+        "sZeroRecords":   "No se encontraron resultados",
+        "sEmptyTable":    "Ningún dato disponible en esta tabla",
+        "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+} );
+
+</script>

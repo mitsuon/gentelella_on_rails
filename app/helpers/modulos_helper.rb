@@ -16,5 +16,11 @@ module ModulosHelper
       return false
     end   
     
+    def contains_asignacion(profesor, seccion,semestre,anio)
+       if(ProfesorDictaSeccion.where(:profesor_id => profesor.id, :semestre => semestre, :seccion_id => seccion.id , :anio => anio).count > 0)
+         return true
+       end 
+       return false
+    end
     
 end

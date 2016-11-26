@@ -3,7 +3,8 @@ class Profesor < ActiveRecord::Base
     validates :email, :uniqueness => { message: "  %{value} ya existe" }, :presence => true
     #validates :precioHora, :presence => { :message => " no puede ser vacio" },  unless: ->(profesor){profesor.tipo == 'Completo'}
     
-    
+  has_many :profesor_dicta_seccions
+  has_many :seccions, :through => :profesor_dicta_seccions
     
   def tipo_honorario
     if tipo == 'Honorario' && numHrs.blank?

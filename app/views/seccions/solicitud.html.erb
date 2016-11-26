@@ -49,7 +49,7 @@
 
       <td>
           <%= f.hidden_field :seccionId, :value => seccion.id %>
-          <%= f.submit "Solicitar",class: "btn btn-primary",onClick: "getSeccionId(this)" %>  
+          <%= f.submit "Solicitar",class: "btn btn-primary btn-xs",onClick: "getSeccionId(this)" %>  
           
           </td>
       </tr>
@@ -78,25 +78,13 @@
 
   function getSeccionId(button){
     buttonSol = button
-    
     console.log("button :",button);
-    
     console.log(" buttonSol.parentNode.childNodes[1].value; :", buttonSol.parentNode.childNodes[1].value);
-   
-    
     document.getElementById("solicitar_seccion_seccionId").value = buttonSol.parentNode.childNodes[1].value;
-    
     console.log("document.getElementById(solicitar_seccion_seccionId) :",document.getElementById("solicitar_seccion_seccionId"));
-    
     arrayButtons = document.getElementsByName("solicitar_seccion[seccionId]");
-    
-    
     document.getElementsByName("solicitar_seccion[seccionId]")[arrayButtons.length -1].value = buttonSol.parentNode.childNodes[1].value;
-    
-    
-    alert(button.parentElement);
-    
-    
+   // alert(button.parentElement);
   }
   
   $('#tabla_secciones').DataTable( {
@@ -126,4 +114,8 @@
         }
     }
 } );
+
+
+  
+
 </script>

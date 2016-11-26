@@ -3,7 +3,7 @@ class SolicitarSeccionsController < ApplicationController
   
   def create
       objeto=params[:solicitar_seccion]
-      #anio = objeto.ani
+      
       
       Rails.logger.debug("xxxxxxx solicitar_seccion: #{params[:solicitar_seccion].inspect}")
       Rails.logger.debug("xxxxxxx anio: #{params[:solicitar_seccion][:anio].inspect}")
