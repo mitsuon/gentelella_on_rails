@@ -1,8 +1,107 @@
 <%= render "renders/pruebatop"%>	
-  <h2>Visualizar Profesor Honorario</h2>
+  <h2>Visualizar Profesor Tiempo Completo</h2>
 <%= render "renders/pruebamid"%>	
 
+<form class="form-horizontal form-label-left">
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.nombre %>">
+    </div> 
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Rut </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.rut %>">
+    </div> 
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Email </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.email %>">
+    </div> 
+  </div>
 
-<%= link_to 'Volver', profesors_path, class: "btn btn-default" %>
+
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.telefono %>">
+    </div> 
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">Número horas </label>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+      <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.numHrs %>">
+    </div>
+  </div>
+    
+    <div class="form-group">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12">Horas docencia </label>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+          <input type="text" class="form-control" disabled="disabled" placeholder="<%= @profesor.hrsDocencia %>">
+      </div>
+    </div>
+    
+  
+ <div class="ln_solid"></div>
+  
+    <div class="form-group">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12">Año </label>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <input type="text" class="form-control" disabled="disabled" placeholder="<%= @anio %>">
+      </div> 
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12">Semestre </label>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+        <input type="text" class="form-control" disabled="disabled" placeholder="<%= @semestre %>">
+      </div> 
+    </div>
+</form>      
+ <div class="ln_solid"></div>
+ 
+ <table id="tabla_secciones" class="table table-striped projects">
+
+  <thead>
+    <tr>
+      <th style="width: 1%">#</th>
+      <th>Nombre Sección</th>
+      <th>Módulo</th>
+      <th>Plan</th>
+      <th>Carrera</th>
+      <th>Horas Laboratorio</th>
+      <th>Horas Cátedra</th>
+      <th>Accion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @secciones.each do |seccion| %>
+      <tr>
+        <td>#</td>
+        <td><%= seccion.nombre %></td>
+        <td><%=  get_modulo(seccion) %></td>
+        <td><%= get_plan(seccion) %></td>
+        <td><%=  get_carrera(seccion) %></td>
+        <td><%= seccion.hrsLab %></td>
+        <td><%= seccion.hrsCatedra %></td>
+      <td>
+
+         <!--  <%= link_to '<i class="fa fa-folder"></i> Asignar'.html_safe, guardar_asignar_path(:profesor_id=> @profesor.id,:seccion => seccion.id , :semestre => @semestre , :anio => @anio),  method: :post ,class: "btn btn-primary btn-xs"  %> -->
+         
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Volver', tiempo_completo_profesors_path, class: "btn btn-default" %>
 <%= render "renders/pruebabot"%>	
 

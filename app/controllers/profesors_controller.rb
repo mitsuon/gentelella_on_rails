@@ -152,12 +152,20 @@ class ProfesorsController < ApplicationController
 
   #GET tiempo_completo/asignar/profesor/:profesor_id/semestre/:semestre/anio/:anio'  tiempo_completo_asignar_path
   def tiempo_completo_asignar
+    @profesor = Profesor.find(params[:profesor_id])
+    @anio = params[:anio]
+    @semestre = params[:semestre]
+    @secciones = Seccion.all
     
   end
    
   #GET tiempo_completo/visualizar/profesor/:profesor_id/semestre/:semestre/anio/:anio' tiempo_completo_visualizar_path
   def tiempo_completo_visualizar
-    
+     @profesor = Profesor.find(params[:profesor_id])
+     @anio = params[:anio]
+     @semestre = params[:semestre]
+     
+     @secciones= Seccion.find(ProfesorDictaSeccion.where(:profesor_id => @profesor.id, :semestre => @semestre, :anio => @anio).pluck(:seccion_id))
   end
   
   #POST tiempo_completo/asignar guardar_tiempo_completo_asignar_path
