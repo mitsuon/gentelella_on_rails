@@ -41,7 +41,8 @@ end
   
   get 'asignar/profesor/:profesor_id/semestre/:semestre/anio/:anio' => "profesors#asignar" , as: :asignar
   get 'visualizar_honorario/profesor/:profesor_id/semestre/:semestre/anio/:anio' => "profesors#visualizar_honorario" , as: :visualizar_honorario
-  
+  get 'contrato/profesor/:profesor_id/semestre/:semestre/anio/:anio' => "profesors#contrato" , as: :profesor_contrato
+
   
   post 'asignar' => "profesors#guardar_asignar", as: :guardar_asignar
   post 'quitar' => "profesors#quitar_asignar", as: :quitar_asignar

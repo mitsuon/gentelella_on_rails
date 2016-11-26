@@ -50,7 +50,7 @@
         <td>
           <%= link_to '<i class="fa fa-eye"></i> Visualizar'.html_safe, "#", :onclick => "enviarInformacion( '#{profesor.id}', 1);" , class: "btn btn-primary btn-xs"  %>
           <%= link_to '<i class="fa fa-pencil"></i> Asignar Sección'.html_safe, "#", :onclick => "enviarInformacion( '#{profesor.id}', 2)",class: "btn btn-warning btn-xs"  %>
-          <%= link_to '<i class="fa fa-file-pdf-o"></i> Contratos'.html_safe, "#", class: "btn btn-success btn-xs"  %>
+          <%= link_to '<i class="fa fa-file-pdf-o"></i> Contratos'.html_safe, "#", :onclick => "enviarInformacion( '#{profesor.id}', 3)",class: "btn btn-success btn-xs"  %>
             
          
 
@@ -101,7 +101,6 @@
     }
 } );
 
-
   
   function enviarInformacion(id,url) {
     var anio = document.getElementById("solicitar_seccion_anio").value,
@@ -112,6 +111,11 @@
     }
     else if(url == 1){
        window.location = "/visualizar_honorario/profesor/"+id+"/semestre/"+semestre+"/anio/"+anio
+    }
+    else if(url == 3){
+      console.log("aaaa");
+      window.location = "/contrato/profesor/"+id+"/semestre/"+semestre+"/anio/"+anio
+
     }
         
   };

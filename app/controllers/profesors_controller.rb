@@ -142,6 +142,15 @@ class ProfesorsController < ApplicationController
   
   end
 
+  #GET /contrato/profesor/:profesor_id/semestre/:semestre/anio/:anio  profesor_contrato_path
+  def contrato
+    @profesor = Profesor.find(params[:profesor_id])
+    @anio = params[:anio]
+    @semestre = params[:semestre]
+    @secciones= Seccion.find(ProfesorDictaSeccion.where(:profesor_id => @profesor.id, :semestre => @semestre, :anio => @anio).pluck(:seccion_id))
+
+  end
+
   
   
    #POST 'visualizar_honorario'
@@ -156,7 +165,6 @@ class ProfesorsController < ApplicationController
     @anio = params[:anio]
     @semestre = params[:semestre]
     @secciones = Seccion.all
-    
   end
    
   #GET tiempo_completo/visualizar/profesor/:profesor_id/semestre/:semestre/anio/:anio' tiempo_completo_visualizar_path
