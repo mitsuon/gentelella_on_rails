@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'contrato/visualizar'
+
   resources :presupuestos
   resources :solicitar_seccions do
     collection do
@@ -36,6 +38,7 @@ end
   get 'modulos/eliminar_espejo/:id/:espejo' => "modulos#eliminar_espejo", as: :eliminar_espejo
 
 
+
   post 'solicitar_seccions/index' => "solicitar_seccions#create"
   
   
@@ -43,6 +46,8 @@ end
   get 'visualizar_honorario/profesor/:profesor_id/semestre/:semestre/anio/:anio' => "profesors#visualizar_honorario" , as: :visualizar_honorario
   get 'contrato/profesor/:profesor_id/semestre/:semestre/anio/:anio' => "profesors#contrato" , as: :profesor_contrato
 
+  post 'eliminar_contrato' => 'profesors#eliminar_contrato', as: :eliminar_contrato
+  post 'generar_contrato' => 'profesors#generar_contrato', as: :generar_contrato
   
   post 'asignar' => "profesors#guardar_asignar", as: :guardar_asignar
   post 'quitar' => "profesors#quitar_asignar", as: :quitar_asignar
@@ -57,7 +62,8 @@ end
   post 'tiempo_completo/visualizar_honorario' => "profesors#guardar_tiempo_completo_visualizar", as: :guardar_tiempo_completo_visualizar
   
   
-  
+  get 'contratos/visualizar/:id/' => "contratos#visualizar", as: :visualizar_contrato
+
 
   devise_for :usuarios,:controllers =>{
     :registrations => "usuarios/registrations",

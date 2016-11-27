@@ -65,13 +65,54 @@
           </div> 
         </div>
     <% end %>
-</form>    
 
+ 
+
+ <div class="ln_solid"></div>
+
+ <h4>Contratos </h4>
+  <table id="tabla_contratos" class="table table-striped projects">
+    <thead>
+      <tr>
+        <th style="width: 1%" >#</th>
+        <th style="width: 10%">Año</th>
+        <th style="width: 10%">Semestre</th>
+        <th style="width: 10%">Monto</th>
+        <th style="width: 10%">Numero Secciones</th>
+        <th style="width: 20%">#Accion</th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @contratos.each do |contrato| %>
+      <tr>
+        <td>#</td>
+        <td><%= contrato.anio %></td>
+        <td><%= contrato.semestre %></td>
+        <td><%= contrato.monto %></td>
+        <td> <%= @secciones.count %></td>
+        <td>
+          <%= link_to '<i class="fa fa-eye"></i> Visualizar'.html_safe, visualizar_contrato_path(:id => contrato.id, :format => :pdf), class: "btn btn-primary btn-xs"  %>
+           <%= link_to '<i class="fa fa-eye"></i> Eliminar Contrato'.html_safe, eliminar_contrato_path(:profesor => @profesor.id, :semestre => @semestre, :anio => @anio,:contrato_id => contrato.id ), method: :post,data: { confirm: '¿Confirma que desea eliminar el contrato?' }, class: "btn btn-danger btn-xs" %>
+
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    
+</form>
  <div class="ln_solid"></div>
 
   <div class="form-group">
     <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
       <%= link_to 'Volver', honorario_profesors_path, class: "btn btn-default" %>
+      <%= link_to 'Generar Contrato', generar_contrato_path(:profesor => @profesor.id, :semestre => @semestre, :anio => @anio),method: :post, class: "btn btn-success" %>
+      
+
+
     </div>
   </div>
 
@@ -79,7 +120,7 @@
 
 <script>
   
-  $('#tabla_secciones').DataTable( {
+  $('#tabla_contratos').DataTable( {
     responsive: true,
     "language": {
         "sProcessing":    "Procesando...",

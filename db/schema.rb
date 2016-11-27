@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125184041) do
+ActiveRecord::Schema.define(version: 20161126193603) do
 
   create_table "carreras", force: :cascade do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "contratos", force: :cascade do |t|
+    t.integer  "anio"
+    t.integer  "semestre"
+    t.integer  "monto"
+    t.string   "texto"
+    t.integer  "profesor_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "contratos", ["profesor_id"], name: "index_contratos_on_profesor_id"
 
   create_table "espejos", force: :cascade do |t|
     t.integer  "mirror_id"

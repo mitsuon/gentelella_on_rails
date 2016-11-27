@@ -1,5 +1,6 @@
 class ProfesorsController < ApplicationController
   before_action :set_profesor, only: [:show, :edit, :update, :destroy]
+  include SeccionsHelper,ProfesorsHelper
 
   # GET /profesors
   # GET /profesors.json
@@ -148,9 +149,46 @@ class ProfesorsController < ApplicationController
     @anio = params[:anio]
     @semestre = params[:semestre]
     @secciones= Seccion.find(ProfesorDictaSeccion.where(:profesor_id => @profesor.id, :semestre => @semestre, :anio => @anio).pluck(:seccion_id))
+    @contratos = Contrato.where(:profesor_id => @profesor.id, :semestre => @semestre, :anio => @anio)
 
   end
 
+  #POST
+  def generar_contrato
+    @profesor = Profesor.find(params[:profesor])
+    @anio = params[:anio]
+    @semestre = params[:semestre]
+    @secciones= Seccion.find(ProfesorDictaSeccion.where(:profesor_id => @profesor.id, :semestre => @semestre, :anio => @anio).pluck(:seccion_id))
+    
+    texto1 = "Dictar las asignaturas "
+    @secciones.each do |seccion| 
+      texto1 = texto1 + "\"" +get_modulo(seccion)+ "\"" + ", clases (#{seccion.hrsCatedra} horas) y laboratorios (#{seccion.hrsLab} horas) a los alumnos de la carrera de #{get_carrera(seccion)}. \n"
+
+   end
+   totalHoras = calcularTotalHrs(@secciones)
+   texto1= texto1+"Este contrato comprende además confeccionar y corregir pruebas opcionales de acuerdo al calendario de actividades de la Universidad de Talca. \n"
+   texto1 = texto1+ "Realizará #{totalHoras} horas semanales."
+   montoTotal = calcularMonto(totalHoras,@profesor.precioHora,@semestre)
+
+   contrato = Contrato.new(:anio => @anio, :semestre =>@semestre, :texto => texto1, :profesor_id => @profesor.id, :monto => montoTotal )
+   if contrato.save 
+     flash[:success] = 'Contrato generado exitosamente'
+   else
+     flash[:success] = 'Ocurrió un error al intentar generar el contrato'
+   end
+   redirect_to profesor_contrato_path(:profesor_id => params[:profesor], :semestre => params[:semestre] , :anio => params[:anio])
+
+  end
+  
+  #POST eliminar contrato
+  def eliminar_contrato
+    
+    Contrato.find(params[:contrato_id]).destroy
+    flash[:success] = 'Contrato Eliminado exitosamente'
+    redirect_to profesor_contrato_path(:profesor_id => params[:profesor], :semestre => params[:semestre] , :anio => params[:anio])
+
+  end
+  
   
   
    #POST 'visualizar_honorario'
@@ -196,4 +234,5 @@ class ProfesorsController < ApplicationController
     def profesor_params
       params.require(:profesor).permit(:nombre, :email, :rut, :telefono, :tipo, :precioHora, :numHrs, :hrsDocencia)
     end
+
 end

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <strong> Nombre: </strong> <br>
+     <p align="justify"><%= @contrato.profesor.nombre %>.</p>  <br>
+
+    <strong> Texto para el contrato: </strong> <br>
+     <p align="justify"><%= @contrato.texto %></p> <br>
+    
+    <strong> Monto Global Honorarios: </strong> <br>
+    <u>      <%= number_to_currency(@contrato.monto, {:precision => 0, :unit => "",:delimiter => "."}) %>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+    </body>
+</html>

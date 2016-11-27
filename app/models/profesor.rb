@@ -5,6 +5,7 @@ class Profesor < ActiveRecord::Base
     
   has_many :profesor_dicta_seccions
   has_many :seccions, :through => :profesor_dicta_seccions
+  has_many :contratos
     
   def tipo_honorario
     if tipo == 'Honorario' && numHrs.blank?
