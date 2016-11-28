@@ -30,13 +30,16 @@ class CarrerasController < ApplicationController
     respond_to do |format|
       if @carrera.valid?
         if @carrera.save
-          format.html { redirect_to @carrera, notice: 'Carrera creada exitosamente.' }
+           flash[:success] = 'Carrera creada exitosamente'
+          format.html { redirect_to @carrera }
           format.json { render :show, status: :created, location: @carrera }
         else
+          flash[:danger] = 'Error al crear carrera'
           format.html { render :new }
           format.json { render json: @carrera.errors, status: :unprocessable_entity }
         end
       else
+        flash[:warning] = @carrera.nombre + " ya existe"
         format.html { render :new }
         format.json { render json: @carrera.errors, status: :unprocessable_entity }
       end
@@ -48,9 +51,11 @@ class CarrerasController < ApplicationController
   def update
     respond_to do |format|
       if @carrera.update(carrera_params)
-        format.html { redirect_to @carrera, notice: 'Carrera actualizada exitosamente.' }
+        flash[:success] = 'Carrera actualizada exitosamente'
+        format.html { redirect_to @carrera}
         format.json { render :show, status: :ok, location: @carrera }
       else
+        flash[:danger] = 'Error al  actualizar carrera'
         format.html { render :edit }
         format.json { render json: @carrera.errors, status: :unprocessable_entity }
       end
@@ -62,7 +67,8 @@ class CarrerasController < ApplicationController
   def destroy
     @carrera.destroy
     respond_to do |format|
-      format.html { redirect_to carreras_url, notice: 'Carrera eliminada exitosamente.' }
+      flash[:success] = 'Carrera eliminada exitosamente'
+      format.html { redirect_to carreras_url }
       format.json { head :no_content }
     end
   end

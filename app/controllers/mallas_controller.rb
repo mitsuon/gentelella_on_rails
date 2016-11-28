@@ -32,9 +32,11 @@ class MallasController < ApplicationController
     @carreras = Carrera.all
     respond_to do |format|
       if @malla.save
-        format.html { redirect_to @malla, notice: 'Malla creada exitosamente.' }
+        flash[:success] = 'Malla creada exitosamente'
+        format.html { redirect_to @malla }
         format.json { render :show, status: :created, location: @malla }
       else
+        flash[:danger] = 'Error al crear Malla'
         format.html { render :new }
         format.json { render json: @malla.errors, status: :unprocessable_entity }
       end
@@ -46,9 +48,11 @@ class MallasController < ApplicationController
   def update
     respond_to do |format|
       if @malla.update(malla_params)
-        format.html { redirect_to @malla, notice: 'Malla actualizada exitosamente.' }
+        flash[:success] = 'Malla actualizada exitosamente'
+        format.html { redirect_to @malla}
         format.json { render :show, status: :ok, location: @malla }
       else
+        flash[:danger] = 'Error al actualizar malla '
         format.html { render :edit }
         format.json { render json: @malla.errors, status: :unprocessable_entity }
       end
@@ -62,7 +66,8 @@ class MallasController < ApplicationController
     @malla.save
     @malla.destroy
     respond_to do |format|
-      format.html { redirect_to mallas_url, notice: 'Malla eliminada exitosamente.' }
+      flash[:success] = 'Malla eliminada exitosamente'
+      format.html { redirect_to mallas_url }
       format.json { head :no_content }
     end
   end

@@ -45,7 +45,7 @@ class ModulosController < ApplicationController
 
   end
 
-def eliminar_espejo
+  def eliminar_espejo
     @modulo = Modulo.find(params[:id])
     @espejo = Modulo.find(params[:espejo])
     
@@ -73,9 +73,11 @@ def eliminar_espejo
     @malla = Malla.all()
     respond_to do |format|
       if @modulo.save
-        format.html { redirect_to @modulo, notice: 'Modulo creado exitosamente.' }
+        flash[:success] = 'Modulo creado exitosamente'
+        format.html { redirect_to @modulo }
         format.json { render :show, status: :created, location: @modulo }
       else
+        flash[:danger] = 'Error al crear modulo'
         format.html { render :new }
         format.json { render json: @modulo.errors, status: :unprocessable_entity }
       end
@@ -87,9 +89,11 @@ def eliminar_espejo
   def update
     respond_to do |format|
       if @modulo.update(modulo_params)
-        format.html { redirect_to @modulo, notice: 'Modulo actualizado exitosamente.' }
+        flash[:success] = 'Modulo actualizado exitosamente'
+        format.html { redirect_to @modulo }
         format.json { render :show, status: :ok, location: @modulo }
       else
+        flash[:danger] = 'Error al actualizar Módulo'
         format.html { render :edit }
         format.json { render json: @modulo.errors, status: :unprocessable_entity }
       end
@@ -101,9 +105,13 @@ def eliminar_espejo
   def destroy
     @modulo.malla_id = nil
     @modulo.save
+    
+    Espejo.destroy(Espejo.where(:mirror_id => @modulo.id).pluck(:id))
+    Espejo.destroy(Espejo.where(:reflector_id => @modulo.id).pluck(:id))
     @modulo.destroy
     respond_to do |format|
-      format.html { redirect_to modulos_url, notice: 'Modulo eliminado exitosamente.' }
+      flash[:success] = 'Modulo eliminado exitosamente'
+      format.html { redirect_to modulos_url}
       format.json { head :no_content }
     end
   end

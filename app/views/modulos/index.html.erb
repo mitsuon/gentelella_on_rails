@@ -44,7 +44,7 @@
           <%= link_to '<i class="fa fa-pencil"></i> Editar'.html_safe, edit_modulo_path(modulo), class: "btn btn-info btn-xs"  %>
           <%= link_to '<i class="fa fa-pencil"></i> Editar Espejo'.html_safe, editar_espejo_modulos_path(modulo), class: "btn btn-success btn-xs"  %>
 
-          <%= link_to '<i class="fa fa-remove"></i> Eliminar'.html_safe, modulo,method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"  %>
+          <%= link_to '<i class="fa fa-remove"></i> Eliminar'.html_safe, modulo,method: :delete, data: { confirm: '¿Seguro que desea eliminar?' }, class: "btn btn-danger btn-xs"  %>
       </td>
       </tr>
     <% end %>

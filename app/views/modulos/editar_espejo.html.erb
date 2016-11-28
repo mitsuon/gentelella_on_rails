@@ -16,7 +16,7 @@
       <input type="text" class="form-control" disabled="disabled" placeholder="<%= @modulo.codigo %>">
     </div> 
   </div>
-</form>
+
 
 <h2>Espejos</h2>
  
@@ -75,9 +75,15 @@
     <% end %>
   </tbody>
 </table>
+</form>
 
+ <div class="ln_solid"></div>
 
-<%= params.inspect %>
+  <div class="form-group">
+    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+      <%= link_to 'Volver', modulos_path, class: "btn btn-default" %>
+    </div>
+  </div>
 
 <%= render "renders/pruebabot"%>
 

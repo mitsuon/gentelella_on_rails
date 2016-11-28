@@ -34,7 +34,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :contraseña, :class =>'control-label col-md-3 col-sm-3 col-xs-12'  %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :nueva_contraseña, :class =>'control-label col-md-3 col-sm-3 col-xs-12'  %> <i></i><br />
     <div class="col-md-9 col-sm-9 col-xs-12">
       <%= f.password_field :password, autocomplete: "off" , :class => 'form-control'%>
       <% if @minimum_password_length %>
